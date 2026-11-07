@@ -6,6 +6,7 @@ from streamlit.testing.v1 import AppTest
 
 from src.data.download import COLUMNS, NUMERIC, map_target
 from src.pipeline import run
+from src.deployment import PortableScorecard, export_bundle
 from src.scorecard import (Scorecard, WOETransformer, decision_cost, probability_to_score,
                            score_to_probability, select_cutoff, validate_input)
 
@@ -89,6 +90,25 @@ def test_points_odds_orientation_and_probability(fixture_credit):
     assert probability_to_score(1/51) == pytest.approx(600)
     assert probability_to_score(1/101) == pytest.approx(620)
     assert probability_to_score(.1) > probability_to_score(.2)
+
+
+def test_portable_export_matches_trained_model_without_borrower_data(fixture_credit, tmp_path):
+    import json
+    frame = fixture_credit[COLUMNS].copy()
+    model = Scorecard().fit(frame, map_target(fixture_credit.label))
+    bundle = {'model': model, 'cutoff': .2, 'defaults': frame.iloc[0].to_dict(),
+              'categories': {c: sorted(frame[c].unique().tolist()) for c in COLUMNS if c not in NUMERIC}}
+    target = tmp_path/'scorecard.json'
+    export_bundle(bundle, target)
+    payload = json.loads(target.read_text())
+    exported = PortableScorecard(payload)
+    frame.loc[0, 'checking'] = 'UNSEEN'
+    frame.loc[1, 'amount'] = np.nan
+    np.testing.assert_allclose(exported.predict_proba(frame), model.predict_proba(frame), atol=1e-12)
+    np.testing.assert_allclose(exported.points(frame), model.points(frame).sum(axis=1), atol=1e-10)
+    assert 'fit_indices_' not in payload
+    assert 'model' not in payload
+    assert not any(isinstance(v, list) and len(v) == len(frame) for v in payload.values())
 
 
 def test_cost_and_cutoff_boundary():
