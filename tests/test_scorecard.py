@@ -138,6 +138,12 @@ def test_pipeline_smoke(fixture_credit, tmp_path):
     assert result['score_probability_max_error'] < 1e-8
     assert (tmp_path/'reports/hasil.json').exists()
     assert (tmp_path/'assets/evaluation.png').stat().st_size > 1000
+    import json
+    export = json.loads((tmp_path/'app/scorecard.json').read_text())
+    split = pd.read_csv(tmp_path/'reports/split.csv')
+    training = fixture_credit.loc[split.query("split == 'train'").row]
+    assert export['defaults']['age'] == training.age.median()
+    assert export['defaults']['checking'] == training.checking.mode().iloc[0]
 
 
 def test_streamlit_smoke_and_prediction():

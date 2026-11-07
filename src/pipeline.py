@@ -144,7 +144,8 @@ def run(data=None, output='.'):
     plt.close(fig)
     (root/'reports/hasil.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
     bundle = {'model': model, 'cutoff': choice['cutoff'],
-                 'defaults': Xtr.iloc[0].to_dict(),
+                 'defaults': {c: float(Xtr[c].median()) if c in NUMERIC else str(Xtr[c].mode().iloc[0])
+                              for c in COLUMNS},
                  'categories': {c: sorted(Xtr[c].dropna().unique().tolist()) for c in COLUMNS if c not in NUMERIC}}
     joblib.dump(bundle, root/'artifacts/scorecard.joblib')
     from src.deployment import export_bundle
