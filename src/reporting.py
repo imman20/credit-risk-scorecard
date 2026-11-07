@@ -192,8 +192,12 @@ streamlit run app/streamlit_app.py
 ```
 
 `python run_all.py` mengunduh data, menjalankan analisis, dan mengeksekusi notebook.
-Artefak lokal `artifacts/scorecard.joblib` dibangun pipeline dan tidak dikomit.
-Aplikasi menampilkan pesan petunjuk bila artefak belum tersedia. Kategori di luar data
+Artefak analisis lokal `artifacts/scorecard.joblib` dibangun pipeline dan tidak dikomit.
+Aplikasi membaca parameter tetap `app/scorecard.json`, yang diekspor pipeline tanpa
+objek pickle atau data peminjam. Demo dapat berjalan dari checkout bersih tanpa fit
+ulang atau unduhan data saat startup. Untuk Streamlit Community Cloud gunakan Python 3.11,
+main file `app/streamlit_app.py`, dan branch yang memuat ekspor parameter tersebut.
+Aplikasi menampilkan pesan petunjuk bila ekspor belum tersedia. Kategori di luar data
 latih menggunakan WoE netral dan diberi peringatan. CI memakai fixture kecil tanpa unduhan.
 
 ## Keterbatasan

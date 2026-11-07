@@ -1,7 +1,7 @@
 """Formulir pendidikan berbasis artefak hasil pipeline lokal."""
 import sys
+import json
 from pathlib import Path
-import joblib
 import pandas as pd
 import streamlit as st
 
@@ -11,19 +11,21 @@ if str(ROOT) not in sys.path:
 
 from src.data.download import COLUMNS, NUMERIC  # noqa: E402
 from src.scorecard import probability_to_score, validate_input  # noqa: E402
+from src.deployment import PortableScorecard  # noqa: E402
 
 st.set_page_config(page_title='Credit Risk Scorecard', layout='wide')
 st.title('Credit Risk Scorecard')
 st.warning('Demonstrasi pendidikan, bukan alat persetujuan kredit operasional.')
-path = ROOT/'artifacts/scorecard.joblib'
+path = ROOT/'app/scorecard.json'
 if not path.exists():
-    st.info('Jalankan python run_all.py dari root repo untuk membangun artefak.')
+    st.info('Parameter belum tersedia. Jalankan python run_all.py dari root repo.')
     st.stop()
 
 
 @st.cache_resource
 def load_artifact(stamp):
-    return joblib.load(path)
+    payload = json.loads(path.read_text(encoding='utf-8'))
+    return {**payload, 'model': PortableScorecard(payload)}
 
 
 bundle = load_artifact(path.stat().st_mtime)

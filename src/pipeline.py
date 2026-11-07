@@ -143,10 +143,13 @@ def run(data=None, output='.'):
     fig.savefig(root/'assets/information_value.png', dpi=150)
     plt.close(fig)
     (root/'reports/hasil.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
-    joblib.dump({'model': model, 'cutoff': choice['cutoff'],
-                 'defaults': Xtr.iloc[0].to_dict(),
-                 'categories': {c: sorted(Xtr[c].dropna().unique().tolist()) for c in COLUMNS if c not in NUMERIC}},
-                root/'artifacts/scorecard.joblib')
+    bundle = {'model': model, 'cutoff': choice['cutoff'],
+                 'defaults': {c: float(Xtr[c].median()) if c in NUMERIC else str(Xtr[c].mode().iloc[0])
+                              for c in COLUMNS},
+                 'categories': {c: sorted(Xtr[c].dropna().unique().tolist()) for c in COLUMNS if c not in NUMERIC}}
+    joblib.dump(bundle, root/'artifacts/scorecard.joblib')
+    from src.deployment import export_bundle
+    export_bundle(bundle, root/'app/scorecard.json')
     from src.reporting import write_reports
     write_reports(root, result, iv, summary, fair, cutoffs)
     from src.artifacts import normalize_text
