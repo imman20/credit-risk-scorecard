@@ -48,16 +48,16 @@ diukur lewat nested CV. Biaya adalah unit relatif, bukan nominal uang atau estim
 
 | Metrik uji | Scorecard | Gradient boosting |
 |---|---:|---:|
-| AUC | 0.765595 | 0.777262 |
-| Gini | 0.531190 | 0.554524 |
-| KS | 0.471429 | 0.461905 |
-| Brier | 0.174752 | 0.169507 |
+| AUC | 0.765119 | 0.777262 |
+| Gini | 0.530238 | 0.554524 |
+| KS | 0.476190 | 0.461905 |
+| Brier | 0.175006 | 0.169507 |
 
-Saya memperoleh cutoff OOF 0.164670. Pada 200 baris uji,
-biaya relatif = 114, salah setuju = 8, salah tolak = 74,
-dan tingkat persetujuan = 37.00%. PSI probabilitas latih versus uji =
-0.083543. AUC OOF scorecard = 0.774978,
-boosting = 0.762827. Base points = 511.953755.
+Saya memperoleh cutoff OOF 0.169345. Pada 200 baris uji,
+biaya relatif = 113, salah setuju = 8, salah tolak = 73,
+dan tingkat persetujuan = 37.50%. PSI probabilitas latih versus uji =
+0.083813. AUC OOF scorecard = 0.774814,
+boosting = 0.762827. Base points = 511.986462.
 Error maksimum konsistensi poin = 1.14e-13.
 
 
@@ -65,47 +65,48 @@ Error maksimum konsistensi poin = 1.14e-13.
 
 ## IV dan alasan pemilihan
 
-| attribute           |         iv | selected   |
-|:--------------------|-----------:|:-----------|
-| checking            | 0.602257   | True       |
-| history             | 0.284611   | True       |
-| purpose             | 0.191645   | True       |
-| savings             | 0.190332   | True       |
-| duration            | 0.160005   | True       |
-| amount              | 0.146464   | True       |
-| age                 | 0.119345   | True       |
-| employment          | 0.101306   | True       |
-| personal_status_sex | 0.0925594  | True       |
-| property            | 0.0811803  | True       |
-| housing             | 0.0809159  | True       |
-| other_plans         | 0.0576279  | True       |
-| debtors             | 0.028067   | True       |
-| existing_credits    | 0.0193154  | False      |
-| foreign_worker      | 0.0193154  | False      |
-| installment         | 0.0159692  | False      |
-| job                 | 0.0146226  | False      |
-| telephone           | 0.00928489 | False      |
-| residence           | 0.00386722 | False      |
-| dependents          | 0          | False      |
+| attribute           |          iv | selected   |
+|:--------------------|------------:|:-----------|
+| checking            | 0.602257    | True       |
+| history             | 0.284611    | True       |
+| purpose             | 0.191645    | True       |
+| savings             | 0.190332    | True       |
+| duration            | 0.160005    | True       |
+| amount              | 0.146464    | True       |
+| age                 | 0.119345    | True       |
+| employment          | 0.101306    | True       |
+| personal_status_sex | 0.0925594   | True       |
+| property            | 0.0811803   | True       |
+| housing             | 0.0809159   | True       |
+| other_plans         | 0.0576279   | True       |
+| existing_credits    | 0.0335227   | True       |
+| debtors             | 0.028067    | True       |
+| foreign_worker      | 0.0193154   | False      |
+| installment         | 0.0159692   | False      |
+| job                 | 0.0146226   | False      |
+| telephone           | 0.00928489  | False      |
+| residence           | 0.00386722  | False      |
+| dependents          | 0.000301914 | False      |
 
 ## Koefisien dan ketidakpastian
 
 |                     |   coefficient |     p_value |   ci_low |    ci_high |
 |:--------------------|--------------:|------------:|---------:|-----------:|
-| const               |     -0.860573 | 6.16954e-20 | -1.04509 | -0.67606   |
-| checking            |     -0.826219 | 2.59948e-11 | -1.06909 | -0.58335   |
-| duration            |     -0.853011 | 0.000454197 | -1.32982 | -0.376207  |
-| history             |     -0.645957 | 0.000378827 | -1.00215 | -0.289765  |
-| purpose             |     -1.00083  | 4.47993e-06 | -1.4284  | -0.57326   |
-| amount              |     -0.942388 | 0.00013808  | -1.42698 | -0.4578    |
-| savings             |     -0.812413 | 0.000362386 | -1.25893 | -0.365898  |
-| employment          |     -0.626018 | 0.0359521   | -1.211   | -0.0410403 |
-| personal_status_sex |     -0.934184 | 0.00289211  | -1.54881 | -0.319555  |
-| debtors             |     -1.32747  | 0.0136809   | -2.38273 | -0.272205  |
-| property            |     -0.317503 | 0.390722    | -1.04253 |  0.407522  |
-| age                 |     -0.654145 | 0.0200466   | -1.20547 | -0.102816  |
-| other_plans         |     -0.903614 | 0.0166617   | -1.64337 | -0.163854  |
-| housing             |     -0.565271 | 0.0987571   | -1.23636 |  0.10582   |
+| const               |     -0.861706 | 6.10951e-20 | -1.04644 | -0.676972  |
+| checking            |     -0.824633 | 2.95715e-11 | -1.06773 | -0.58154   |
+| duration            |     -0.856675 | 0.000437409 | -1.33416 | -0.379186  |
+| history             |     -0.627506 | 0.00104284  | -1.00262 | -0.252392  |
+| purpose             |     -1.00647  | 4.31855e-06 | -1.43573 | -0.577206  |
+| amount              |     -0.947913 | 0.000131931 | -1.43391 | -0.461918  |
+| savings             |     -0.814825 | 0.000350758 | -1.2616  | -0.368055  |
+| employment          |     -0.622552 | 0.0371785   | -1.20811 | -0.0369966 |
+| personal_status_sex |     -0.927879 | 0.00314233  | -1.54363 | -0.312123  |
+| debtors             |     -1.32419  | 0.0139255   | -2.37957 | -0.268812  |
+| property            |     -0.312489 | 0.398768    | -1.03831 |  0.413335  |
+| age                 |     -0.645009 | 0.0225915   | -1.19941 | -0.0906041 |
+| other_plans         |     -0.909095 | 0.0161478   | -1.64979 | -0.168397  |
+| housing             |     -0.568368 | 0.0970569   | -1.23973 |  0.102991  |
+| existing_credits    |     -0.170368 | 0.763282    | -1.27908 |  0.938346  |
 
 Konvergen: True. Peringatan fit: tidak ada.
 Tabel poin lengkap: `scorecard_points.csv`; tabel bin dan distribusi: `woe.csv`.
@@ -114,11 +115,11 @@ Tabel poin lengkap: `scorecard_points.csv`; tabel bin dan distribusi: `woe.csv`.
 
 |   cutoff |   cost |   wrong_approve |   wrong_reject |   tn |   fp |   fn |   tp |   approval_rate |
 |---------:|-------:|----------------:|---------------:|-----:|-----:|-----:|-----:|----------------:|
-|  0.1     |    121 |               5 |             96 |   44 |   96 |    5 |   55 |           0.245 |
-|  0.16467 |    114 |               8 |             74 |   66 |   74 |    8 |   52 |           0.37  |
-|  0.2     |    107 |               9 |             62 |   78 |   62 |    9 |   51 |           0.435 |
-|  0.3     |    114 |              14 |             44 |   96 |   44 |   14 |   46 |           0.55  |
-|  0.5     |    149 |              25 |             24 |  116 |   24 |   25 |   35 |           0.705 |
+| 0.1      |    120 |               5 |             95 |   45 |   95 |    5 |   55 |           0.25  |
+| 0.169345 |    113 |               8 |             73 |   67 |   73 |    8 |   52 |           0.375 |
+| 0.2      |    102 |               8 |             62 |   78 |   62 |    8 |   52 |           0.43  |
+| 0.3      |    115 |              14 |             45 |   95 |   45 |   14 |   46 |           0.545 |
+| 0.5      |    159 |              27 |             24 |  116 |   24 |   27 |   33 |           0.715 |
 
 TN = jumlah good uji - salah tolak; TP = jumlah bad uji - salah setuju.
 Seluruh label dan prediksi tersedia pada `test_predictions.csv` untuk rekonstruksi.
@@ -127,11 +128,11 @@ Seluruh label dan prediksi tersedia pada `test_predictions.csv` untuk rekonstruk
 
 | attribute   | group   |   n |   bad_n |   approval_rate |   approval_ci_low |   approval_ci_high |   false_reject_rate_good |   false_approve_rate_bad |    brier |
 |:------------|:--------|----:|--------:|----------------:|------------------:|-------------------:|-------------------------:|-------------------------:|---------:|
-| age         | 25-49   | 145 |      43 |        0.37931  |          0.304411 |           0.46044  |                 0.509804 |                 0.116279 | 0.156729 |
-| age         | 50+     |  23 |       7 |        0.478261 |          0.292369 |           0.670376 |                 0.4375   |                 0.285714 | 0.195204 |
-| age         | <25     |  32 |      10 |        0.25     |          0.132522 |           0.421069 |                 0.681818 |                 0.1      | 0.241716 |
-| sex         | female  |  64 |      15 |        0.296875 |          0.19905  |           0.417704 |                 0.612245 |                 0        | 0.147147 |
-| sex         | male    | 136 |      45 |        0.404412 |          0.325652 |           0.488424 |                 0.483516 |                 0.177778 | 0.187742 |
+| age         | 25-49   | 145 |      43 |        0.386207 |          0.310869 |           0.467418 |                 0.5      |                 0.116279 | 0.157016 |
+| age         | 50+     |  23 |       7 |        0.478261 |          0.292369 |           0.670376 |                 0.4375   |                 0.285714 | 0.195485 |
+| age         | <25     |  32 |      10 |        0.25     |          0.132522 |           0.421069 |                 0.681818 |                 0.1      | 0.241805 |
+| sex         | female  |  64 |      15 |        0.296875 |          0.19905  |           0.417704 |                 0.612245 |                 0        | 0.147838 |
+| sex         | male    | 136 |      45 |        0.411765 |          0.332581 |           0.495796 |                 0.472527 |                 0.177778 | 0.187791 |
 
 ## Keterbatasan
 
@@ -150,4 +151,3 @@ false reject pada good, false approve pada bad, serta Brier. Kelompok kecil meng
 ketidakpastian besar; perbedaan bukan bukti diskriminasi kausal atau jaminan keadilan.
 Saya tidak membuat klaim kepatuhan. Aplikasi adalah demonstrasi pendidikan dan bukan
 alat persetujuan kredit operasional.
-

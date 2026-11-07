@@ -58,8 +58,8 @@ class WOETransformer(TransformerMixin, BaseEstimator):
         for col in self.columns_:
             if pd.api.types.is_numeric_dtype(X[col]):
                 self.medians_[col] = float(X[col].median())
-                edges = np.unique(X[col].quantile(np.linspace(0, 1, self.bins + 1)))
-                self.edges_[col] = np.r_[-np.inf, edges[1:-1], np.inf]
+                internal = np.unique(X[col].quantile(np.linspace(0, 1, self.bins + 1)[1:-1]))
+                self.edges_[col] = np.r_[-np.inf, internal, np.inf]
             labels = self._labels(X, col)
             table = pd.DataFrame({'bin': labels.to_numpy(), 'bad': y}).groupby('bin').bad.agg(['sum', 'count'])
             k = len(table)

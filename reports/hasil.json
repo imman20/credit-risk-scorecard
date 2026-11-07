@@ -19,24 +19,25 @@
     "property",
     "age",
     "other_plans",
-    "housing"
+    "housing",
+    "existing_credits"
   ],
   "oof_choice": {
-    "cutoff": 0.16466980380739774,
-    "cost": 400.0,
-    "wrong_approve": 27.0,
-    "wrong_reject": 265.0,
-    "tn": 295.0,
-    "fp": 265.0,
-    "fn": 27.0,
-    "tp": 213.0,
-    "approval_rate": 0.4025
+    "cutoff": 0.1693454188761009,
+    "cost": 404.0,
+    "wrong_approve": 28.0,
+    "wrong_reject": 264.0,
+    "tn": 296.0,
+    "fp": 264.0,
+    "fn": 28.0,
+    "tp": 212.0,
+    "approval_rate": 0.405
   },
   "scorecard": {
-    "auc": 0.7655952380952381,
-    "gini": 0.5311904761904762,
-    "ks": 0.4714285714285714,
-    "brier": 0.17475152295679702
+    "auc": 0.7651190476190477,
+    "gini": 0.5302380952380954,
+    "ks": 0.47619047619047616,
+    "brier": 0.17500592127489192
   },
   "boosting": {
     "auc": 0.7772619047619048,
@@ -45,10 +46,10 @@
     "brier": 0.16950698437861458
   },
   "oof_scorecard": {
-    "auc": 0.7749776785714285,
-    "gini": 0.549955357142857,
-    "ks": 0.41845238095238096,
-    "brier": 0.17268350875809646
+    "auc": 0.7748139880952382,
+    "gini": 0.5496279761904763,
+    "ks": 0.42678571428571427,
+    "brier": 0.17278016052530987
   },
   "oof_boosting": {
     "auc": 0.7628273809523811,
@@ -57,19 +58,19 @@
     "brier": 0.17388228998015656
   },
   "test_decision": {
-    "cutoff": 0.16466980380739774,
-    "cost": 114,
+    "cutoff": 0.1693454188761009,
+    "cost": 113,
     "wrong_approve": 8,
-    "wrong_reject": 74,
-    "tn": 66,
-    "fp": 74,
+    "wrong_reject": 73,
+    "tn": 67,
+    "fp": 73,
     "fn": 8,
     "tp": 52,
-    "approval_rate": 0.37
+    "approval_rate": 0.375
   },
-  "psi_train_test": 0.08354288818423938,
+  "psi_train_test": 0.08381333343693924,
   "logistic_converged": true,
   "fit_warnings": [],
   "score_probability_max_error": 1.1368683772161603e-13,
-  "base_points": 511.95375455365206
+  "base_points": 511.98646248941765
 }

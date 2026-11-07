@@ -149,6 +149,8 @@ def run(data=None, output='.'):
                 root/'artifacts/scorecard.joblib')
     from src.reporting import write_reports
     write_reports(root, result, iv, summary, fair, cutoffs)
+    from src.artifacts import normalize_text
+    normalize_text([*(root/'reports').glob('*'), root/'README.md'])
     print(json.dumps(result, indent=2))
     return result
 

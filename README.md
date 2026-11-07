@@ -77,16 +77,16 @@ diukur lewat nested CV. Biaya adalah unit relatif, bukan nominal uang atau estim
 
 | Metrik uji | Scorecard | Gradient boosting |
 |---|---:|---:|
-| AUC | 0.765595 | 0.777262 |
-| Gini | 0.531190 | 0.554524 |
-| KS | 0.471429 | 0.461905 |
-| Brier | 0.174752 | 0.169507 |
+| AUC | 0.765119 | 0.777262 |
+| Gini | 0.530238 | 0.554524 |
+| KS | 0.476190 | 0.461905 |
+| Brier | 0.175006 | 0.169507 |
 
-Saya memperoleh cutoff OOF 0.164670. Pada 200 baris uji,
-biaya relatif = 114, salah setuju = 8, salah tolak = 74,
-dan tingkat persetujuan = 37.00%. PSI probabilitas latih versus uji =
-0.083543. AUC OOF scorecard = 0.774978,
-boosting = 0.762827. Base points = 511.953755.
+Saya memperoleh cutoff OOF 0.169345. Pada 200 baris uji,
+biaya relatif = 113, salah setuju = 8, salah tolak = 73,
+dan tingkat persetujuan = 37.50%. PSI probabilitas latih versus uji =
+0.083813. AUC OOF scorecard = 0.774814,
+boosting = 0.762827. Base points = 511.986462.
 Error maksimum konsistensi poin = 1.14e-13.
 
 

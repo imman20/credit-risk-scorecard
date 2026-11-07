@@ -73,6 +73,13 @@ def test_unknown_category_is_neutral():
     assert np.isfinite(t.transform(pd.DataFrame({'category': [None]}))).all().all()
 
 
+def test_numeric_repeated_quantiles_keep_minimum_value_boundary():
+    frame = pd.DataFrame({'dependents': [1]*9+[2]*3})
+    transformer = WOETransformer(min_iv=0).fit(frame, [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0])
+    assert len(transformer.table_) == 2
+    assert transformer.edges_['dependents'].tolist() == [-np.inf, 1, 1.25, np.inf]
+
+
 def test_points_odds_orientation_and_probability(fixture_credit):
     model = Scorecard().fit(fixture_credit[COLUMNS], map_target(fixture_credit.label))
     p = model.predict_proba(fixture_credit[COLUMNS])[:, 1]

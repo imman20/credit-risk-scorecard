@@ -6,10 +6,12 @@ from pathlib import Path
 
 import nbformat as nbf
 from nbclient import NotebookClient
+from src.artifacts import normalize_text
 
 
 def main():
     root = Path.cwd()
+    normalize_text([*Path('reports').glob('*'), Path('README.md')])
     manifest = {str(p.relative_to(root)).replace('\\', '/'): hashlib.sha256(p.read_bytes()).hexdigest()
                 for folder in ['reports', 'assets'] for p in sorted((root/folder).glob('*')) if p.is_file()}
     Path('reports/artifact_manifest.json').unlink(missing_ok=True)
@@ -44,6 +46,7 @@ display(result)
     NotebookClient(notebook, timeout=300, resources={'metadata': {'path': str(root)}}).execute(env=env)
     Path('notebooks').mkdir(exist_ok=True)
     nbf.write(notebook, 'notebooks/analisis.ipynb')
+    normalize_text([Path('reports/artifact_manifest.json'), Path('notebooks/analisis.ipynb')])
     print('Notebook dieksekusi dan seluruh hash artefak cocok.')
 
 

@@ -1,4 +1,2 @@
-* text=auto
-reports/** -text
-assets/** -text
-notebooks/*.ipynb -text
+* text=auto eol=lf
+*.png binary
