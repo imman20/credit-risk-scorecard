@@ -1,0 +1,9 @@
+{
+  "url": "https://archive.ics.uci.edu/static/public/144/statlog+german+credit+data.zip",
+  "sha256_zip": "e12d9d5def6845c0622634a1cd2ab87fa470668c4298f1ec52a4e403376a435b",
+  "rows": 1000,
+  "target": {
+    "1": "good",
+    "2": "bad/default=1"
+  }
+}
