@@ -1,0 +1,4 @@
+* text=auto
+reports/** -text
+assets/** -text
+notebooks/*.ipynb -text

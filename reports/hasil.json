@@ -1,0 +1,75 @@
+{
+  "seed": 2024,
+  "n": 1000,
+  "train_n": 800,
+  "test_n": 200,
+  "bad_n": 300,
+  "missing_cells": 0,
+  "exact_duplicate_rows": 0,
+  "selected_attributes": [
+    "checking",
+    "duration",
+    "history",
+    "purpose",
+    "amount",
+    "savings",
+    "employment",
+    "personal_status_sex",
+    "debtors",
+    "property",
+    "age",
+    "other_plans",
+    "housing"
+  ],
+  "oof_choice": {
+    "cutoff": 0.16466980380739774,
+    "cost": 400.0,
+    "wrong_approve": 27.0,
+    "wrong_reject": 265.0,
+    "tn": 295.0,
+    "fp": 265.0,
+    "fn": 27.0,
+    "tp": 213.0,
+    "approval_rate": 0.4025
+  },
+  "scorecard": {
+    "auc": 0.7655952380952381,
+    "gini": 0.5311904761904762,
+    "ks": 0.4714285714285714,
+    "brier": 0.17475152295679702
+  },
+  "boosting": {
+    "auc": 0.7772619047619048,
+    "gini": 0.5545238095238096,
+    "ks": 0.46190476190476193,
+    "brier": 0.16950698437861458
+  },
+  "oof_scorecard": {
+    "auc": 0.7749776785714285,
+    "gini": 0.549955357142857,
+    "ks": 0.41845238095238096,
+    "brier": 0.17268350875809646
+  },
+  "oof_boosting": {
+    "auc": 0.7628273809523811,
+    "gini": 0.5256547619047622,
+    "ks": 0.4232142857142857,
+    "brier": 0.17388228998015656
+  },
+  "test_decision": {
+    "cutoff": 0.16466980380739774,
+    "cost": 114,
+    "wrong_approve": 8,
+    "wrong_reject": 74,
+    "tn": 66,
+    "fp": 74,
+    "fn": 8,
+    "tp": 52,
+    "approval_rate": 0.37
+  },
+  "psi_train_test": 0.08354288818423938,
+  "logistic_converged": true,
+  "fit_warnings": [],
+  "score_probability_max_error": 1.1368683772161603e-13,
+  "base_points": 511.95375455365206
+}

@@ -1,0 +1,17 @@
+{
+  "reports/coefficients.csv": "e6479dc2bceb61404e4645f3d5d9f9ddb8441290bc858fd8dd15c6da23a19be2",
+  "reports/cutoffs.csv": "68d297e02c424071824067f6d7a0a1e102162e508ffe2e30491baef6ad646ef5",
+  "reports/eda.csv": "50e57b6f916e861d0e3c5b28f572fb5933d308dbc4b7a1ff7e8e450f46591605",
+  "reports/evaluation.csv": "ff68fa545ab627b7eca515fd3ad97ceb48059913dca98a9e78c6db57ccfdbf11",
+  "reports/fairness.csv": "ea2ceb28d91fb7d4f3d3a53a99cfd8c097b90a19c5b160f03011099f2dad0155",
+  "reports/hasil.json": "0015acd389559bb3f009d3115b0fffa9cbcd58055d7df4a18f04a17b6a3079bf",
+  "reports/information_value.csv": "25331329252dc6e2ef0a411861fbaf81ae816f9010522f1c3884cb543e7effbb",
+  "reports/laporan_analisis.md": "f7eca4d87fdb4b0609f03e6395ad3c44ab8c90d6c2f63f9697e15da0706ac23d",
+  "reports/scorecard_points.csv": "12feca4e237b147d571c13d910fa064ae50b30ad0251bf7b5364498f216c585a",
+  "reports/source.json": "611f2ea83197d4270cee05a78c039cf1d4d859fac0dc5925d1f38efb3b9807a1",
+  "reports/split.csv": "abc6b424d0653368055c892086177cf8812392621b2fdddc00d79bf00f70273b",
+  "reports/test_predictions.csv": "69c336c7ef3f8b8ca5999e590865ab15bc82cef5cf560bdd271ff1bf8b10f07b",
+  "reports/woe.csv": "56cc7271e9d00a9629f7bb6fe5e42646e0fa3a723b9d407c76af219e740c4aba",
+  "assets/evaluation.png": "cb83082ac629e8c0bf0b6a63191d8a0d6fa5fd92d413ed8ad8b71b1f598bb1bb",
+  "assets/information_value.png": "57dafca992500b780538161f7db0f15b98e95878c1777396331ac2f83eefae0b"
+}
